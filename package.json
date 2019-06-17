@@ -7,16 +7,17 @@
     "@material-ui/icons": "^4.2.0",
     "@material-ui/styles": "^4.1.1",
     "clsx": "^1.0.4",
+    "express": "^4.17.1",
     "jss-rtl": "^0.2.3",
     "next": "^8.1.0",
+    "next-i18next": "^0.42.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-i18next": "^10.11.1"
+    "react-dom": "^16.8.6"
   },
   "scripts": {
-    "dev": "next",
+    "dev": "node index.js",
     "build": "next build",
-    "start": "next start"
+    "start": "NODE_ENV=production node index.js"
   }
 }
