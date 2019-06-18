@@ -1,20 +1,32 @@
-import React from 'react'
-import Error from 'next/error'
+import React from 'react';
+import PropTypes from 'prop-types';
+import Error from 'next/error';
 
-class Page extends React.Component {
+class ErrorPage extends React.Component {
   static async getInitialProps() {
     return {
       namespacesRequired: ['common'],
-    }
+    };
   }
 
   render() {
-    if (this.props.errorCode) {
-      return <Error statusCode={this.props.errorCode} />
+    const { errorCode, stars } = this.props;
+    if (errorCode) {
+      return (<Error statusCode={errorCode} />);
     }
 
-    return <div>Next stars: {this.props.stars}</div>
+    return (
+      <div>
+        Next stars:&nbsp;
+        {stars}
+      </div>
+    );
   }
 }
 
-export default Page;
+ErrorPage.propTypes = {
+  errorCode: PropTypes.string.isRequired,
+  stars: PropTypes.number.isRequired,
+};
+
+export default ErrorPage;

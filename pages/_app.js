@@ -5,7 +5,7 @@ import App, { Container } from 'next/app';
 import Head from 'next/head';
 import { ThemeProvider, StylesProvider, jssPreset } from '@material-ui/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import { appWithTranslation } from '../i18n'
+import { appWithTranslation } from '../i18n';
 import theme from '../components/theme';
 
 class MyApp extends App {
