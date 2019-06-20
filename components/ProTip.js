@@ -27,11 +27,11 @@ export default function ProTip() {
   return (
     <Typography className={classes.root} color="textSecondary">
       <LightBulbIcon className={classes.lightBulb} />
-      Pro tip: See more{' '}
+      Pro tip: See more&nbsp;
       <Link href="https://material-ui.com/getting-started/page-layout-examples/">
         page layout examples
-      </Link>{' '}
-      on the Material-UI documentation.
+      </Link>
+      &nbsp;on the Material-UI documentation.
     </Typography>
   );
 }
