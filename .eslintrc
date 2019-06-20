@@ -49,6 +49,7 @@
             "every": [ "id" ]
         },
     }],
+    "linebreak-style": 0
   },
   "plugins": [
     "react",

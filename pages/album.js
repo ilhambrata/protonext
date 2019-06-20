@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import CameraIcon from '@material-ui/icons/PhotoCamera';
@@ -13,8 +14,10 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Opacity from '@material-ui/icons/Opacity';
+import GTranslate from '@material-ui/icons/GTranslate';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
+import { i18n, withTranslation } from '../i18n';
 
 function MadeWithLove() {
   return (
@@ -61,9 +64,9 @@ const useStyles = makeStyles(theme => ({
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-export default function Album() {
+function Album(props) {
   const classes = useStyles();
-
+  const { t } = props;
   return (
     <React.Fragment>
       <CssBaseline />
@@ -73,8 +76,15 @@ export default function Album() {
           <Typography variant="h6" color="inherit" noWrap>
             Album layout
           </Typography>
-          <IconButton aria-label="Delete" className={classes.margin}>
+          <IconButton aria-label="theme" className={classes.margin}>
             <Opacity />
+          </IconButton>
+          <IconButton
+            aria-label="lang"
+            className={classes.margin}
+            onClick={() => i18n.changeLanguage(i18n.language === 'en' ? 'de' : 'en')}
+          >
+            <GTranslate />
           </IconButton>
         </Toolbar>
       </AppBar>
@@ -86,9 +96,7 @@ export default function Album() {
               Album layout
             </Typography>
             <Typography variant="h5" align="center" color="textSecondary" paragraph>
-              Something short and leading about the collection below—its contents, the creator, etc.
-              Make it short and sweet, but not too short so folks don&apos;t simply skip over it
-              entirely.
+              {t('description')}
             </Typography>
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justify="center">
@@ -154,6 +162,12 @@ export default function Album() {
   );
 }
 
+Album.propTypes = {
+  t: PropTypes.func.isRequired,
+};
+
 Album.getInitialProps = () => ({
-  namespacesRequired: ['common']
+  namespacesRequired: ['common', 'footer']
 });
+
+export default withTranslation('footer')(Album);

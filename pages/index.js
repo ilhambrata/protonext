@@ -24,8 +24,6 @@ class Index extends React.Component {
   }
 }
 
-
-
 Index.propTypes = {
   t: PropTypes.func.isRequired,
 };
