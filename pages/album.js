@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
@@ -17,6 +17,7 @@ import Opacity from '@material-ui/icons/Opacity';
 import GTranslate from '@material-ui/icons/GTranslate';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
+import ThemeWrapper from '../components/ThemeWrapper';
 import { i18n, withTranslation } from '../i18n';
 
 function MadeWithLove() {
@@ -57,7 +58,7 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
   },
   footer: {
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: theme.palette.secondary.main,
     padding: theme.spacing(6),
   },
 }));
@@ -67,6 +68,12 @@ const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 function Album(props) {
   const classes = useStyles();
   const { t } = props;
+  const [mode, setMode] = useState('dark');
+  const { handleChangeMode } = ThemeWrapper();
+  const handleSwitchMode = () => {
+    setMode(mode === 'dark' ? 'light' : 'dark');
+    handleChangeMode(mode);
+  };
   return (
     <React.Fragment>
       <CssBaseline />
@@ -76,7 +83,11 @@ function Album(props) {
           <Typography variant="h6" color="inherit" noWrap>
             Album layout
           </Typography>
-          <IconButton aria-label="theme" className={classes.margin}>
+          <IconButton
+            aria-label="theme"
+            className={classes.margin}
+            onClick={() => handleSwitchMode()}
+          >
             <Opacity />
           </IconButton>
           <IconButton
