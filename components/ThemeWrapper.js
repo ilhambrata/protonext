@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { ThemeProvider } from '@material-ui/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
 
-function ThemeWrapper(props) {
+export default function ThemeWrapper() {
   const [theme, setTheme] = useState(
     createMuiTheme({
       palette: {
@@ -21,20 +21,47 @@ function ThemeWrapper(props) {
       })
     );
   };
-  const { children } = props;
-  const Wrap = (
-    <ThemeProvider theme={theme}>
-      {children}
-    </ThemeProvider>
-  );
   return {
-    Wrap,
+    theme,
     handleChangeMode
   };
 }
 
-ThemeWrapper.propTypes = {
+export function Wraper(props) {
+  const { children } = props;
+  const [mode, setMode] = useState('dark');
+  const [theme, setTheme] = useState(
+    createMuiTheme({
+      palette: {
+        type: 'light'
+      }
+    })
+  );
+  const handleChangeMode = modeParam => {
+    setTheme(
+      createMuiTheme({
+        palette: {
+          type: modeParam
+        }
+      })
+    );
+  };
+  const handleSwitchMode = () => {
+    setMode(mode === 'light' ? 'dark' : 'light');
+    handleChangeMode(mode);
+  };
+  return (
+    <div>
+      <button type="button" onClick={() => handleSwitchMode()}>
+        Switch mode
+      </button>
+      <ThemeProvider theme={theme}>
+        {children}
+      </ThemeProvider>
+    </div>
+  );
+}
+
+Wraper.propTypes = {
   children: PropTypes.node.isRequired,
 };
-
-export default ThemeWrapper;

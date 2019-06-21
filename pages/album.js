@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
@@ -17,7 +17,7 @@ import Opacity from '@material-ui/icons/Opacity';
 import GTranslate from '@material-ui/icons/GTranslate';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
-import ThemeWrapper from '../components/ThemeWrapper';
+// import ThemeWrapper from '../components/ThemeWrapper';
 import { i18n, withTranslation } from '../i18n';
 
 function MadeWithLove() {
@@ -67,13 +67,13 @@ const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 function Album(props) {
   const classes = useStyles();
-  const { t } = props;
-  const [mode, setMode] = useState('dark');
-  const { handleChangeMode } = ThemeWrapper();
-  const handleSwitchMode = () => {
-    setMode(mode === 'dark' ? 'light' : 'dark');
-    handleChangeMode(mode);
-  };
+  const { t, onToggleDark } = props;
+  //    const [mode, setMode] = useState('dark');
+  //    const { handleChangeMode } = ThemeWrapper();
+  //  const handleSwitchMode = () => {
+  //    setMode(mode === 'dark' ? 'light' : 'dark');
+  //    handleChangeMode(mode);
+  //  };
   return (
     <React.Fragment>
       <CssBaseline />
@@ -86,7 +86,7 @@ function Album(props) {
           <IconButton
             aria-label="theme"
             className={classes.margin}
-            onClick={() => handleSwitchMode()}
+            onClick={onToggleDark}
           >
             <Opacity />
           </IconButton>
@@ -175,6 +175,7 @@ function Album(props) {
 
 Album.propTypes = {
   t: PropTypes.func.isRequired,
+  onToggleDark: PropTypes.func.isRequired,
 };
 
 Album.getInitialProps = () => ({
