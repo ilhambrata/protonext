@@ -67,8 +67,6 @@ MyDocument.getInitialProps = async ctx => {
 
   return {
     ...initialProps,
-    requiredNamespaces: ['common', 'footer'],
-    namespacesRequired: ['common', 'footer'],
     // Styles fragment is rendered after the app and page rendering finish.
     styles: (
       <React.Fragment>

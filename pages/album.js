@@ -17,8 +17,8 @@ import Opacity from '@material-ui/icons/Opacity';
 import GTranslate from '@material-ui/icons/GTranslate';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
-// import ThemeWrapper from '../components/ThemeWrapper';
-import { i18n, withTranslation } from '../i18n';
+import { withI18next } from '../lib/withI18next';
+import i18n from '../i18n';
 
 function MadeWithLove() {
   return (
@@ -178,9 +178,4 @@ Album.propTypes = {
   onToggleDark: PropTypes.func.isRequired,
 };
 
-Album.getInitialProps = () => ({
-  requiredNamespaces: ['common', 'footer'],
-  namespacesRequired: ['common', 'footer'],
-});
-
-export default withTranslation('footer')(Album);
+export default withI18next(['footer', 'common'])(Album);

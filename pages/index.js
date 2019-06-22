@@ -2,16 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
-import { withTranslation } from '../i18n';
+import { withI18next } from '../lib/withI18next';
 
 class Index extends React.Component {
-  static async getInitialProps() {
-    return {
-      requiredNamespaces: ['common', 'footer'],
-      namespacesRequired: ['common', 'footer'],
-    };
-  }
-
   render() {
     // const classes = useStyles();
     const { t } = this.props;
@@ -29,4 +22,4 @@ Index.propTypes = {
   t: PropTypes.func.isRequired,
 };
 
-export default withTranslation('footer')(Index);
+export default withI18next('footer')(Index);
