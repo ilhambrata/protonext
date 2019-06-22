@@ -18,16 +18,21 @@ function MyApp(props) {
     }
   });
 
+  let themeType = 'light';
+  if (typeof Storage !== 'undefined') {
+    themeType = localStorage.getItem('muiTheme') || 'light';
+  }
   // We keep the theme in app state
   const [theme, setTheme] = useState({
     palette: {
-      type: 'light'
+      type: themeType
     }
   });
 
   // we change the palette type of the theme in state
   const toggleDarkTheme = () => {
     const newPaletteType = theme.palette.type === 'light' ? 'dark' : 'light';
+    localStorage.setItem('muiTheme', theme.palette.type === 'light' ? 'dark' : 'light');
     setTheme({
       palette: {
         type: newPaletteType

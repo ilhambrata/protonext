@@ -24,7 +24,7 @@ function MadeWithLove() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Built with love by the '}
-      <Link color="inherit" href="https://material-ui.com/">
+      <Link color="inherit" href="/">
         Material-UI
       </Link>
       {' team.'}
@@ -179,7 +179,8 @@ Album.propTypes = {
 };
 
 Album.getInitialProps = () => ({
-  namespacesRequired: ['common', 'footer']
+  requiredNamespaces: ['common', 'footer'],
+  namespacesRequired: ['common', 'footer'],
 });
 
 export default withTranslation('footer')(Album);
