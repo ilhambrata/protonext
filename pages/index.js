@@ -6,9 +6,9 @@ import { withTranslation } from '../i18n';
 
 class Index extends React.Component {
   static async getInitialProps() {
+    console.log('getinitprops');
     return {
-      requiredNamespaces: ['common', 'footer'],
-      namespacesRequired: ['common', 'footer'],
+      namespacesRequired: ['footer'],
     };
   }
 

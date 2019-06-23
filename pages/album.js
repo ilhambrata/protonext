@@ -172,8 +172,8 @@ Album.propTypes = {
   onToggleDark: PropTypes.func.isRequired,
 };
 
-Album.getInitialProps = () => ({
-  requiredNamespaces: ['common', 'footer'],
+Album.getInitialProps = async () => ({
+  namespacesRequired: ['footer'],
 });
 
 export default withTranslation('footer')(Album);
