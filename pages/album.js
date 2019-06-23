@@ -68,12 +68,6 @@ const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 function Album(props) {
   const classes = useStyles();
   const { t, onToggleDark } = props;
-  //    const [mode, setMode] = useState('dark');
-  //    const { handleChangeMode } = ThemeWrapper();
-  //  const handleSwitchMode = () => {
-  //    setMode(mode === 'dark' ? 'light' : 'dark');
-  //    handleChangeMode(mode);
-  //  };
   return (
     <React.Fragment>
       <CssBaseline />
@@ -180,7 +174,6 @@ Album.propTypes = {
 
 Album.getInitialProps = () => ({
   requiredNamespaces: ['common', 'footer'],
-  namespacesRequired: ['common', 'footer'],
 });
 
 export default withTranslation('footer')(Album);

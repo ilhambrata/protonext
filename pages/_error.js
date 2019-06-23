@@ -42,10 +42,4 @@ ErrorPagex.defaultProps = {
   stars: 0,
 };
 
-
-ErrorPagex.getInitialProps = () => ({
-  requiredNamespaces: ['common', 'footer'],
-  namespacesRequired: ['common', 'footer'],
-});
-
 export default withTranslation('footer')(ErrorPagex);

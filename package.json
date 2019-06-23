@@ -16,7 +16,8 @@
     "pre-commit": "^1.2.2",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "react-i18next": "^10.11.2"
   },
   "scripts": {
     "dev": "node index.js",
