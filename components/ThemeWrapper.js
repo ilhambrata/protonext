@@ -7,7 +7,10 @@ export default function ThemeWrapper() {
   const [theme, setTheme] = useState(
     createMuiTheme({
       palette: {
-        type: 'dark'
+        type: 'dark',
+        primary: {
+          main: '#91d655',
+        },
       }
     })
   );

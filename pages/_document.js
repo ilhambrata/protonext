@@ -23,6 +23,7 @@ class MyDocument extends Document {
           />
         </Head>
         <body>
+          <h1 id="loading_coy">Loading</h1>
           <Main />
           <NextScript />
         </body>
