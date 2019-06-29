@@ -17,8 +17,9 @@ import Opacity from '@material-ui/icons/Opacity';
 import GTranslate from '@material-ui/icons/GTranslate';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
+import { withTranslation } from 'react-i18next';
 // import ThemeWrapper from '../components/ThemeWrapper';
-import { i18n, withTranslation } from '../i18n';
+import i18n from '../i18n';
 
 function MadeWithLove() {
   return (
@@ -67,7 +68,7 @@ const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 function Album(props) {
   const classes = useStyles();
-  const { t, onToggleDark } = props;
+  const { onToggleDark, t } = props;
   return (
     <React.Fragment>
       <CssBaseline />
@@ -102,7 +103,7 @@ function Album(props) {
             </Typography>
             <Typography variant="h5" align="center" color="textSecondary" paragraph>
               {t('description')}
-            </Typography>
+            </Typography>}
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justify="center">
                 <Grid item>
@@ -172,8 +173,4 @@ Album.propTypes = {
   onToggleDark: PropTypes.func.isRequired,
 };
 
-Album.getInitialProps = async () => ({
-  namespacesRequired: ['footer'],
-});
-
-export default withTranslation('footer')(Album);
+export default withTranslation(['footer', 'common'])(Album);

@@ -34,7 +34,3 @@ export default function About() {
     </Container>
   );
 }
-
-About.getInitialProps = () => ({
-  namespacesRequired: ['common']
-});

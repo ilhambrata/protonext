@@ -1,15 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Error from 'next/error';
-import { withTranslation } from '../i18n';
+import { withTranslation } from 'react-i18next';
 
 class ErrorPagex extends React.Component {
-  static async getInitialProps() {
-    return {
-      namespacesRequired: ['footer'],
-    };
-  }
-
   render() {
     const { errorCode, stars, t } = this.props;
     if (errorCode) {
@@ -42,4 +36,4 @@ ErrorPagex.defaultProps = {
   stars: 0,
 };
 
-export default withTranslation('footer')(ErrorPagex);
+export default withTranslation(['footer', 'common'])(ErrorPagex);

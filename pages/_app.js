@@ -6,7 +6,9 @@ import rtl from 'jss-rtl';
 import Head from 'next/head';
 import { StylesProvider, jssPreset } from '@material-ui/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import { appWithTranslation } from '../i18n';
+import { I18nextProvider } from 'react-i18next';
+import initialI18nInstance from '../i18n';
+// import LanguageSwitch from "../components/LanguageSwitch";
 
 let themeType = 'light';
 if (typeof Storage !== 'undefined') {
@@ -48,22 +50,30 @@ class MyApp extends App {
     const muiTheme = createMuiTheme(theme);
 
     const { Component, pageProps } = this.props; // eslint-disable-line
+    const { i18n, initialI18nStore, initialLanguage } = pageProps || {};
     const jss = create({ plugins: [...jssPreset().plugins, rtl()] });
     return (
       <Container>
         <Head>
           <title>My pagexxxx</title>
         </Head>
-        <StylesProvider jss={jss}>
-          {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-          <MuiThemeProvider theme={muiTheme}>
-            <CssBaseline />
-            <Component {...pageProps} onToggleDark={this.toggleDarkTheme} />
-          </MuiThemeProvider>
-        </StylesProvider>
+        <I18nextProvider
+          i18n={i18n || initialI18nInstance}
+          initialI18nStore={initialI18nStore}
+          initialLanguage={initialLanguage}
+        >
+          <StylesProvider jss={jss}>
+            {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+            <MuiThemeProvider theme={muiTheme}>
+              <CssBaseline />
+              <Component {...pageProps} onToggleDark={this.toggleDarkTheme} />
+            </MuiThemeProvider>
+          </StylesProvider>
+        </I18nextProvider>
       </Container>
     );
   }
 }
 
-export default appWithTranslation(MyApp);
+
+export default MyApp;
