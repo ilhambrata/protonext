@@ -10,6 +10,7 @@
     "babel-eslint": "^10.0.1",
     "clsx": "^1.0.4",
     "express": "^4.17.1",
+    "i18next-express-middleware": "^1.8.0",
     "jss": "^10.0.0-alpha.21",
     "jss-rtl": "^0.2.3",
     "next": "^8.1.1-canary.42",
