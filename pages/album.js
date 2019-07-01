@@ -67,7 +67,9 @@ const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 function Album(props) {
   const classes = useStyles();
-  const { t, onToggleDark } = props;
+  const { t, onToggleDark } = props; // eslint-disable-line
+  console.log(t('common:error-with-status'));
+  console.log(t('footer:description'));
   return (
     <React.Fragment>
       <CssBaseline />
@@ -101,7 +103,7 @@ function Album(props) {
               Album layout
             </Typography>
             <Typography variant="h5" align="center" color="textSecondary" paragraph>
-              {t('description')}
+              {t('footer:description')}
             </Typography>
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justify="center">
@@ -168,12 +170,12 @@ function Album(props) {
 }
 
 Album.propTypes = {
-  t: PropTypes.func.isRequired,
+  // t: PropTypes.func.isRequired,
   onToggleDark: PropTypes.func.isRequired,
 };
 
 Album.getInitialProps = async () => ({
-  namespacesRequired: ['footer'],
+  namespacesRequired: ['footer', 'common'],
 });
 
-export default withTranslation('footer')(Album);
+export default withTranslation(['footer', 'common'])(Album);
